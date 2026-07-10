@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Roster · 13 – 19 July 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&family=Poppins:wght@800&display=swap');
+
+  :root {
+    --bg: #fbf7ee;
+    --surface: #ffffff;
+    --surface2: #fff3d6;
+    --border: #ece3cf;
+    --accent: #ffc72c;
+    --accent-text: #b8860b;
+    --accent-dim: #e3b23c;
+    --text: #1c1c1e;
+    --text-muted: #8a8478;
+    --dispatch-color: #c97a1a;
+    --care-color: #1e9e5c;
+    --supervisor-color: #6f4fd1;
+    --operator-color: #1c84cc;
+    --special-color: #d9483f;
+    --ringback-color: #c8a800;
+    --card-hover: #fff8e6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    padding: 48px 40px 36px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 120% at 50% -20%, rgba(255,199,44,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner { position: relative; max-width: 1200px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+  .brand-icon { color: var(--accent-text); flex-shrink: 0; }
+  .brand-word {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+  .header-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  h1 span { color: var(--accent-text); }
+  .header-sub {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 28px;
+    max-width: 580px;
+    line-height: 1.5;
+  }
+  .header-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    max-width: 1200px;
+    margin: 28px auto 0;
+    padding: 0 40px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* ── HOW TO USE ── */
+  .how-to-wrap { max-width: 1200px; margin: 16px auto 0; padding: 0 40px; }
+  .how-to {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .how-to summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-text);
+  }
+  .how-to summary::-webkit-details-marker { display: none; }
+  .how-to summary .how-to-toggle {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .how-to summary .how-to-toggle .show-label { display: none; }
+  .how-to summary .how-to-toggle .hide-label { display: inline; }
+  .how-to:not([open]) summary .how-to-toggle .show-label { display: inline; }
+  .how-to:not([open]) summary .how-to-toggle .hide-label { display: none; }
+  .how-to-body {
+    padding: 2px 16px 16px;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .how-to-body p { margin-bottom: 10px; }
+  .how-to-body p:last-child { margin-bottom: 0; }
+  .how-to-body strong { color: var(--text); }
+  .how-to-body .swatch {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 2px;
+    margin: 0 2px -1px 0;
+  }
+  .filter-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-right: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--surface2);
+    color: var(--text);
+    border-color: var(--accent-dim);
+  }
+  .filter-btn.active { border-color: var(--accent-text); color: var(--accent-text); background: rgba(255,199,44,0.15); }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 40px 60px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* ── ROSTER GRID ── */
+  .roster-section { min-width: 0; }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(95px, 1fr));
+    gap: 8px;
+    margin-bottom: 28px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .day-col { display: flex; flex-direction: column; gap: 0; }
+
+  .day-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 8px 8px;
+    text-align: center;
+    position: relative;
+  }
+  .day-name {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+  .day-date {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .day-month {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .day-col.weekend .day-header {
+    background: linear-gradient(135deg, #fff6dc 0%, #ffeab0 100%);
+    border-color: var(--accent-dim);
+  }
+  .day-col.weekend .day-date { color: var(--text); }
+
+  .event-flag {
+    margin-top: 6px;
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-text);
+    background: rgba(255,199,44,0.22);
+    border: 1px solid rgba(199,146,10,0.3);
+    border-radius: 10px;
+    padding: 2px 6px;
+    display: inline-block;
+    cursor: default;
+  }
+
+  .day-body {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 8px 6px 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* ── SHIFT CHIP ── */
+  .role-section-label {
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 4px 2px;
+    margin-top: 4px;
+  }
+  .role-dispatch .role-section-label { color: var(--dispatch-color); }
+  .role-care .role-section-label { color: var(--care-color); }
+  .role-supervisor .role-section-label { color: var(--supervisor-color); }
+  .role-operator .role-section-label { color: var(--operator-color); }
+  .role-special .role-section-label { color: var(--special-color); }
+
+  .shift-chip {
+    border-radius: 5px;
+    padding: 5px 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+    position: relative;
+  }
+  .shift-chip:hover { transform: translateY(-1px); filter: saturate(1.4) brightness(0.98); }
+  .shift-chip.highlighted {
+    border-color: var(--accent-text) !important;
+    box-shadow: 0 0 0 2px rgba(255,199,44,0.45);
+  }
+  .shift-chip .chip-name {
+    font-size: 10px;
+    font-weight: 600;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .shift-chip .chip-time {
+    font-size: 8.5px;
+    display: block;
+    opacity: 0.75;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .chip-dispatch {
+    background: rgba(201,122,26,0.12);
+    border-color: rgba(201,122,26,0.3);
+    color: var(--dispatch-color);
+  }
+  .chip-care {
+    background: rgba(30,158,92,0.12);
+    border-color: rgba(30,158,92,0.3);
+    color: var(--care-color);
+  }
+  .chip-supervisor {
+    background: rgba(111,79,209,0.12);
+    border-color: rgba(111,79,209,0.3);
+    color: var(--supervisor-color);
+  }
+  .chip-operator {
+    background: rgba(28,132,204,0.12);
+    border-color: rgba(28,132,204,0.3);
+    color: var(--operator-color);
+  }
+  .chip-ringback-flag {
+    background: rgba(255,213,0,0.25) !important;
+    border-color: rgba(180,140,0,0.5) !important;
+  }
+  .chip-special {
+    background: rgba(217,72,63,0.12);
+    border-color: rgba(217,72,63,0.3);
+    color: var(--special-color);
+  }
+  .chip-ringback {
+    background: rgba(255,213,0,0.18);
+    border-color: rgba(200,168,0,0.4);
+    color: var(--ringback-color);
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 16px; }
+
+  .person-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .person-card-header {
+    padding: 20px 20px 16px;
+    background: linear-gradient(135deg, var(--surface2), var(--surface));
+    border-bottom: 1px solid var(--border);
+  }
+  .person-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .person-name { font-size: 20px; font-weight: 700; color: var(--text); }
+  .person-role-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-top: 4px;
+    margin-right: 4px;
+  }
+  .badge-dispatch { background: rgba(201,122,26,0.15); color: var(--dispatch-color); }
+  .badge-care { background: rgba(30,158,92,0.15); color: var(--care-color); }
+  .badge-supervisor { background: rgba(111,79,209,0.15); color: var(--supervisor-color); }
+  .badge-operator { background: rgba(28,132,204,0.15); color: var(--operator-color); }
+  .badge-special { background: rgba(217,72,63,0.15); color: var(--special-color); }
+  .badge-ringback { background: rgba(255,213,0,0.2); color: var(--ringback-color); }
+
+  .person-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .pstat {
+    background: var(--surface);
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .pstat-val { font-size: 22px; font-weight: 700; color: var(--text); }
+  .pstat-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  .person-shifts { padding: 14px 16px; }
+  .person-shifts-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .person-shift-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+  }
+  .person-shift-row:last-child { border-bottom: none; }
+  .shift-dot {
+    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+  }
+  .shift-day-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    width: 64px;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+  .shift-time-label { font-size: 11px; color: var(--text); font-weight: 500; }
+  .shift-role-mini { font-size: 9px; color: var(--text-muted); margin-left: auto; text-align: right; }
+
+  /* Empty state */
+  .empty-state {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--text-muted);
+  }
+  .empty-icon { font-size: 36px; margin-bottom: 10px; }
+  .empty-text { font-size: 13px; line-height: 1.5; }
+
+  /* ── PANELS ── */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .panel-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .panel-count { font-size: 11px; color: var(--text-muted); }
+
+  /* Team list */
+  .team-list { max-height: 320px; overflow-y: auto; }
+  .team-list::-webkit-scrollbar { width: 4px; }
+  .team-list::-webkit-scrollbar-track { background: transparent; }
+  .team-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .team-member-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(48,54,61,0.4);
+    padding: 10px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    transition: background 0.12s;
+    font-family: 'Inter', sans-serif;
+  }
+  .team-member-btn:last-child { border-bottom: none; }
+  .team-member-btn:hover { background: var(--card-hover); }
+  .team-member-btn.active { background: rgba(255,199,44,0.15); }
+  .tm-init {
+    width: 28px; height: 28px; border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .tm-name { font-size: 12px; font-weight: 500; color: var(--text); }
+  .tm-shifts { font-size: 10px; color: var(--text-muted); }
+  .tm-meta { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+  .tm-hours { font-size: 12px; font-weight: 700; color: var(--text); }
+  .tm-roles {
+    font-size: 9.5px; font-weight: 600; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* Festival watch */
+  .fw-list { padding: 6px 16px 14px; }
+  .fw-day {
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.4);
+  }
+  .fw-day:last-child { border-bottom: none; }
+  .fw-date {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .fw-event {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    padding-left: 12px;
+    position: relative;
+  }
+  .fw-event::before {
+    content: '♪';
+    position: absolute;
+    left: 0;
+    color: var(--accent-text);
+  }
+  .fw-note {
+    padding: 12px 16px;
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  /* ── RESPONSIVE ── */
+  /* Stack the sidebar below the grid on everything except very wide
+     desktop monitors — Sunday can never end up hidden behind it. */
+  @media (max-width: 1400px) {
+    main { grid-template-columns: 1fr; padding: 20px; }
+    .sidebar { position: static; }
+  }
+  @media (max-width: 900px) {
+    .filter-bar { padding: 0 16px; }
+    .how-to-wrap { padding: 0 16px; }
+    header { padding: 32px 16px 24px; }
+    .days-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .days-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+    .header-stats { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 640 512" width="34" height="27" aria-hidden="true">
+        <path fill="currentColor" d="M484.4 96C407 96 349.3 164.9 320 208.5C290.7 164.9 233 96 155.6 96C69.7 96 0 165.7 0 251.6C0 337.5 69.7 407.2 155.6 407.2C233 407.2 290.7 338.3 320 294.7C349.3 338.3 407 407.2 484.4 407.2C570.3 407.2 640 337.5 640 251.6C640 165.7 570.3 96 484.4 96zM155.6 339.2C107.5 339.2 68 299.7 68 251.6C68 203.5 107.5 164 155.6 164C201.9 164 245.9 209.7 277.4 251.6C245.9 293.5 201.9 339.2 155.6 339.2zM484.4 339.2C438.1 339.2 394.1 293.5 362.6 251.6C394.1 209.7 438.1 164 484.4 164C532.5 164 572 203.5 572 251.6C572 299.7 532.5 339.2 484.4 339.2z"/>
+      </svg>
+      <span class="brand-word">Lynk</span>
+    </div>
+    <div class="header-eyebrow">Operations Roster · Festival Season</div>
+    <h1>Weekly <span>Roster</span></h1>
+    <div class="header-sub">Mon 13 – Sun 19 July 2026 · A huge weekend ahead — All Ireland Final (Galway v Limerick) at Croke Park and Charlie Puth at Iveagh Gardens on Sunday. Click a name to see exactly when you're on.</div>
+    <div class="header-stats">
+      <div class="stat"><span class="stat-value" id="stat-staff">—</span><span class="stat-label">Staff on Duty</span></div>
+      <div class="stat"><span class="stat-value">7</span><span class="stat-label">Days Covered</span></div>
+      <div class="stat"><span class="stat-value" id="stat-events">—</span><span class="stat-label">Gigs This Week</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="how-to-wrap">
+  <details class="how-to" open>
+    <summary>
+      How to read this roster
+      <span class="how-to-toggle"><span class="show-label">Show</span><span class="hide-label">Hide</span></span>
+    </summary>
+    <div class="how-to-body">
+      <p><strong>The grid.</strong> Each column is a day, split into sections — Dispatch, Customer Care, Supervisor, Operators, and Swift Limerick on Sundays. Colours match the legend above the grid (<span class="swatch" style="background:var(--dispatch-color)"></span>Dispatch, <span class="swatch" style="background:var(--care-color)"></span>Customer Care, <span class="swatch" style="background:var(--supervisor-color)"></span>Supervisor, <span class="swatch" style="background:var(--operator-color)"></span>Operators, <span class="swatch" style="background:var(--special-color)"></span>Swift Limerick). A small "X gigs" badge on a day means a big concert is on nearby that night, so expect busier traffic.</p>
+      <p><strong>Find your own shifts.</strong> Tap or click your name — on any shift card, or in the "Full Team" list. All of your shifts for the week get a gold outline, and your full weekly schedule (shift count, days on, times) appears in the panel. Tap your name again to clear it.</p>
+      <p><strong>Filter by role.</strong> The "Show" buttons (All Roles / Dispatch / Customer Care / Supervisor / Operators) hide everything except that department — handy for checking who's covering a role on a given day.</p>
+      <p><strong>Festival Watch.</strong> Lists each night's gigs and venues so everyone knows when to expect a surge in demand.</p>
+    </div>
+  </details>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="filter-btn active" onclick="filterRole('all', event)">All Roles</button>
+  <button class="filter-btn" onclick="filterRole('dispatch', event)">Dispatch</button>
+  <button class="filter-btn" onclick="filterRole('care', event)">Customer Care</button>
+  <button class="filter-btn" onclick="filterRole('supervisor', event)">Supervisor</button>
+  <button class="filter-btn" onclick="filterRole('operator', event)">Operators</button>
+</div>
+
+<main>
+  <section class="roster-section">
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--dispatch-color)"></div>Dispatch</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--care-color)"></div>Customer Care</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--supervisor-color)"></div>Supervisor</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--operator-color)"></div>Operators</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--special-color)"></div>Swift Limerick</div>
+    </div>
+
+    <div class="days-grid" id="days-grid">
+      <!-- JS renders here -->
+    </div>
+  </section>
+
+  <aside class="sidebar">
+    <div class="person-card" id="person-card">
+      <div class="empty-state">
+        <div class="empty-icon">☝️</div>
+        <div class="empty-text">Click any shift or name below<br>to see the full weekly schedule</div>
+      </div>
+    </div>
+
+    <div class="panel" id="festival-panel">
+      <div class="panel-header">
+        <span>Festival Watch</span>
+      </div>
+      <div class="fw-list" id="fw-list"></div>
+      <div class="fw-note" id="fw-note"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <span>Full Team</span>
+        <span class="panel-count" id="team-count">— members</span>
+      </div>
+      <div class="team-list" id="team-list"></div>
+    </div>
+  </aside>
+</main>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const DAYS = [
+  { date: '13', month: 'Jul', day: 'Mon', key: 'd713' },
+  { date: '14', month: 'Jul', day: 'Tue', key: 'd714' },
+  { date: '15', month: 'Jul', day: 'Wed', key: 'd715' },
+  { date: '16', month: 'Jul', day: 'Thu', key: 'd716' },
+  { date: '17', month: 'Jul', day: 'Fri', key: 'd717' },
+  { date: '18', month: 'Jul', day: 'Sat', key: 'd718' },
+  { date: '19', month: 'Jul', day: 'Sun', key: 'd719' },
+];
+
+// role: 'dispatch' | 'care' | 'supervisor' | 'operator' | 'special'
+const SHIFTS = [
+  // ── RINGBACK OPS ─────────────────────────────────────────────────────────
+
+  // ── MONDAY 13th ──────────────────────────────────────────────────────────
+  { day:'d713', role:'dispatch',   name:'Haris',    time:'6am – 2pm' },
+  { day:'d713', role:'dispatch',   name:'Usama',    time:'2pm – 10pm' },
+  { day:'d713', role:'dispatch',   name:'Mo',       time:'10pm – 6am' },
+  { day:'d713', role:'dispatch',   name:'Munib',    time:'9am – 7pm', note:'2nd Dispatch' },
+  { day:'d713', role:'care',       name:'Kellie',   time:'6am – 2pm' },
+  { day:'d713', role:'supervisor', name:'Haris',    time:'2pm – 5pm' },
+  { day:'d713', role:'operator',   name:'Rubab', ringback:true,    time:'6am – 2pm' },
+  { day:'d713', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
+  { day:'d713', role:'operator',   name:'Lee',      time:'8am – 4pm' },
+  { day:'d713', role:'operator',   name:'Bobbie',   time:'8am – 2pm' },
+  { day:'d713', role:'operator',   name:'Sine',     time:'9am – 5pm' },
+  { day:'d713', role:'operator',   name:'Darren',   time:'9am – 5pm' },
+  { day:'d713', role:'operator',   name:'Bilal', ringback:true,    time:'2pm – 10pm' },
+  { day:'d713', role:'operator',   name:'Paul N',   time:'2pm – 10pm' },
+  { day:'d713', role:'operator',   name:'Paul G',   time:'4pm – 1am' },
+  { day:'d713', role:'operator',   name:'Jydii', ringback:true,    time:'10pm – 6am' },
+
+  // ── TUESDAY 14th ─────────────────────────────────────────────────────────
+  { day:'d714', role:'dispatch',   name:'Stephen',  time:'6am – 2pm' },
+  { day:'d714', role:'dispatch',   name:'Usama',    time:'2pm – 10pm' },
+  { day:'d714', role:'dispatch',   name:'Mo',       time:'10pm – 6am' },
+  { day:'d714', role:'dispatch',   name:'Munib',    time:'9am – 7pm', note:'2nd Dispatch' },
+  { day:'d714', role:'care',       name:'Kellie',   time:'6am – 2pm' },
+  { day:'d714', role:'care',       name:'Michelle', time:'9am – 5pm' },
+  { day:'d714', role:'supervisor', name:'Haris',    time:'7am – 5pm' },
+  { day:'d714', role:'operator',   name:'Rubab', ringback:true,    time:'6am – 2pm' },
+  { day:'d714', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
+  { day:'d714', role:'operator',   name:'Lee',      time:'8am – 4pm' },
+  { day:'d714', role:'operator',   name:'Rafey',    time:'8am – 7pm' },
+  { day:'d714', role:'operator',   name:'Shahzaib', time:'9am – 5pm' },
+  { day:'d714', role:'operator',   name:'Hazel',    time:'10am – 4pm' },
+  { day:'d714', role:'operator',   name:'Bilal', ringback:true,    time:'2pm – 10pm' },
+  { day:'d714', role:'operator',   name:'Paul N',   time:'2pm – 10pm' },
+  { day:'d714', role:'operator',   name:'Paul G',   time:'4pm – 1am' },
+  { day:'d714', role:'operator',   name:'Jydii', ringback:true,    time:'10pm – 6am' },
+
+  // ── WEDNESDAY 15th ───────────────────────────────────────────────────────
+  { day:'d715', role:'dispatch',   name:'Stephen',  time:'6am – 2pm' },
+  { day:'d715', role:'dispatch',   name:'Usama',    time:'2pm – 10pm' },
+  { day:'d715', role:'dispatch',   name:'Mo',       time:'10pm – 6am' },
+  { day:'d715', role:'dispatch',   name:'Munib',    time:'9am – 7pm', note:'2nd Dispatch' },
+  { day:'d715', role:'care',       name:'Kellie',   time:'6am – 2pm' },
+  { day:'d715', role:'care',       name:'Michelle', time:'9am – 5pm' },
+  { day:'d715', role:'supervisor', name:'Haris',    time:'7am – 5pm' },
+  { day:'d715', role:'special',    name:'Paul N',   time:'8pm – 10pm' },
+  { day:'d715', role:'special',    name:'Paul G',   time:'10pm – 6am' },
+  { day:'d715', role:'operator',   name:'Rubab', ringback:true,    time:'6am – 2pm' },
+  { day:'d715', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
+  { day:'d715', role:'operator',   name:'Lee',      time:'8am – 4pm' },
+  { day:'d715', role:'operator',   name:'Bobbie',   time:'8am – 4pm' },
+  { day:'d715', role:'operator',   name:'Shahzaib', time:'9am – 5pm' },
+  { day:'d715', role:'operator',   name:'Rafey',    time:'9am – 5pm' },
+  { day:'d715', role:'operator',   name:'Ahmed',    time:'10am – 7pm' },
+  { day:'d715', role:'operator',   name:'Arzanish', time:'2pm – 10pm' },
+  { day:'d715', role:'operator',   name:'Paul N',   time:'2pm – 8pm' },
+  { day:'d715', role:'operator',   name:'Lorraine', time:'4pm – 1am' },
+  { day:'d715', role:'operator',   name:'Jydii', ringback:true,    time:'8pm – 6am' },
+
+  // ── THURSDAY 16th ────────────────────────────────────────────────────────
+  { day:'d716', role:'dispatch',   name:'Stephen',  time:'6am – 2pm' },
+  { day:'d716', role:'dispatch',   name:'Usama',    time:'2pm – 10pm' },
+  { day:'d716', role:'dispatch',   name:'Mo',       time:'10pm – 6am' },
+  { day:'d716', role:'dispatch',   name:'Munib',    time:'9am – 7pm', note:'2nd Dispatch' },
+  { day:'d716', role:'care',       name:'Kellie',   time:'6am – 2pm' },
+  { day:'d716', role:'care',       name:'Michelle', time:'9am – 5pm' },
+  { day:'d716', role:'supervisor', name:'Haris',    time:'7am – 5pm' },
+  { day:'d716', role:'special',    name:'Lee',      time:'6am – 8am' },
+  { day:'d716', role:'operator',   name:'Rubab', ringback:true,    time:'6am – 2pm' },
+  { day:'d716', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
+  { day:'d716', role:'operator',   name:'Lee',      time:'8am – 4pm' },
+  { day:'d716', role:'operator',   name:'Shahzaib', time:'8am – 7pm' },
+  { day:'d716', role:'operator',   name:'Ahmed',    time:'9am – 5pm' },
+  { day:'d716', role:'operator',   name:'Darren',   time:'9am – 5pm' },
+  { day:'d716', role:'operator',   name:'Hazel',    time:'10am – 4pm' },
+  { day:'d716', role:'operator',   name:'Arzanish', time:'2pm – 10pm' },
+  { day:'d716', role:'operator',   name:'Nadine',   time:'2pm – 10pm' },
+  { day:'d716', role:'operator',   name:'Lorraine', time:'4pm – 1am' },
+  { day:'d716', role:'operator',   name:'Paul G',   time:'10pm – 6am' },
+
+  // ── FRIDAY 17th ──────────────────────────────────────────────────────────
+  { day:'d717', role:'dispatch',   name:'Stephen',  time:'6am – 2pm' },
+  { day:'d717', role:'dispatch',   name:'Usama',    time:'2pm – 10pm' },
+  { day:'d717', role:'dispatch',   name:'Mo',       time:'10pm – 6am' },
+  { day:'d717', role:'dispatch',   name:'Munib',    time:'9am – 7pm', note:'2nd Dispatch' },
+  { day:'d717', role:'care',       name:'Kellie',   time:'6am – 2pm' },
+  { day:'d717', role:'care',       name:'Michelle', time:'9am – 5pm' },
+  { day:'d717', role:'supervisor', name:'Haris',    time:'7am – 5pm' },
+  { day:'d717', role:'operator',   name:'Rubab',     ringback:true, time:'6am – 6pm' },
+  { day:'d717', role:'operator',   name:'Shahzaib',               time:'6am – 6pm' },
+  { day:'d717', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
+  { day:'d717', role:'operator',   name:'Bobbie',   time:'8am – 4pm' },
+  { day:'d717', role:'operator',   name:'Rafey',    time:'8am – 6pm' },
+  { day:'d717', role:'operator',   name:'Sine',     time:'9am – 5pm' },
+  { day:'d717', role:'operator',   name:'Ahmed',    time:'10am – 8pm' },
+  { day:'d717', role:'operator',   name:'Hazel',    time:'10am – 4pm' },
+  { day:'d717', role:'operator',   name:'Bilal', ringback:true,    time:'2pm – 12am' },
+  { day:'d717', role:'operator',   name:'Lorraine', time:'4pm – 1am' },
+  { day:'d717', role:'operator',   name:'Arzanish', ringback:true, time:'6pm – 6am' },
+
+  // ── SATURDAY 18th ────────────────────────────────────────────────────────
+  { day:'d718', role:'dispatch',   name:'Stephen',  time:'6am – 1pm' },
+  { day:'d718', role:'dispatch',   name:'Munib',    time:'1pm – 8pm' },
+  { day:'d718', role:'dispatch',   name:'Mo',       time:'8pm – 6am' },
+  { day:'d718', role:'operator',   name:'Rafey', ringback:true,    time:'6am – 6pm' },
+  { day:'d718', role:'operator',   name:'Shahzaib', time:'8am – 6pm' },
+  { day:'d718', role:'operator',   name:'Ahmed',    time:'10am – 8pm' },
+  { day:'d718', role:'operator',   name:'Darren',   time:'12pm – 8pm' },
+  { day:'d718', role:'operator',   name:'Lorraine', time:'4pm – 12am' },
+  { day:'d718', role:'operator',   name:'Bilal', ringback:true,    time:'6pm – 2am' },
+  { day:'d718', role:'operator',   name:'Arzanish', time:'6pm – 4am' },
+  { day:'d718', role:'operator',   name:'Jydii', ringback:true,    time:'6pm – 6am' },
+
+  // ── SUNDAY 19th ──────────────────────────────────────────────────────────
+  { day:'d719', role:'dispatch',   name:'Rafey',    time:'6am – 6pm' },
+  { day:'d719', role:'dispatch',   name:'Jydii',    time:'6pm – 6am' },
+  { day:'d719', role:'special',    name:'Paul G',   time:'11:45pm – 6am', note:'Limerick run' },
+  { day:'d719', role:'operator',   name:'Ahmed', ringback:true,    time:'6am – 6pm' },
+  { day:'d719', role:'operator',   name:'Michelle', time:'8am – 4pm' },
+  { day:'d719', role:'operator',   name:'Paul N',   time:'10am – 6pm' },
+  { day:'d719', role:'operator',   name:'Lorraine', time:'4pm – 12am' },
+  { day:'d719', role:'operator',   name:'Bilal',    time:'4pm – 2am' },
+  { day:'d719', role:'operator',   name:'Arzanish', ringback:true, time:'6pm – 6am' },
+];
+
+// Major gigs happening across Dublin this week — context for staffing levels
+const EVENTS = {
+  d717: ['Damien Dempsey — Iveagh Gardens', 'James Morrison & Emeli Sandé — Iveagh Gardens'],
+  d718: ['Garbage — Iveagh Gardens'],
+  d719: ['All Ireland Final (Galway v Limerick) — Croke Park', 'Charlie Puth — Iveagh Gardens'],
+};
+
+const roleColors = {
+  dispatch:   'var(--dispatch-color)',
+  care:       'var(--care-color)',
+  supervisor: 'var(--supervisor-color)',
+  operator:   'var(--operator-color)',
+  special:    'var(--special-color)',
+  ringback:   'var(--ringback-color)',
+};
+const roleBadgeClass = {
+  dispatch:   'badge-dispatch',
+  care:       'badge-care',
+  supervisor: 'badge-supervisor',
+  operator:   'badge-operator',
+  special:    'badge-special',
+  ringback:   'badge-ringback',
+};
+const roleLabel = {
+  dispatch: 'Dispatch', care: 'Customer Care', supervisor: 'Supervisor',
+  operator: 'Operator', special: 'Swift Limerick',
+};
+const roleOrder = ['dispatch', 'care', 'supervisor', 'operator', 'special'];
+
+// ── HOURS HELPERS ─────────────────────────────────────────────────────────
+function timeToMinutes(t) {
+  const m = t.trim().toLowerCase().match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)$/);
+  if (!m) return null;
+  let hour = parseInt(m[1], 10);
+  const min = m[2] ? parseInt(m[2], 10) : 0;
+  if (m[3] === 'am') { if (hour === 12) hour = 0; }
+  else { if (hour !== 12) hour += 12; }
+  return hour * 60 + min;
+}
+function shiftHours(timeStr) {
+  const parts = timeStr.split('\u2013').map(s => s.trim());
+  if (parts.length !== 2) return 0;
+  const start = timeToMinutes(parts[0]);
+  const end = timeToMinutes(parts[1]);
+  if (start === null || end === null) return 0;
+  let diff = end - start;
+  if (diff <= 0) diff += 24 * 60;
+  return diff / 60;
+}
+function formatHours(h) {
+  return (Math.round(h * 10) / 10).toString().replace(/\.0$/, '');
+}
+
+// ── BUILD LOOKUP ──────────────────────────────────────────────────────────────
+const allNames = [...new Set(SHIFTS.map(s => s.name))].sort();
+const shiftsByPerson = {};
+allNames.forEach(n => {
+  shiftsByPerson[n] = SHIFTS.filter(s => s.name === n);
+});
+
+let activeFilter = 'all';
+let activePerson = null;
+
+// ── STATS ────────────────────────────────────────────────────────────────────
+document.getElementById('stat-staff').textContent = allNames.length;
+document.getElementById('team-count').textContent = `${allNames.length} members`;
+const totalEvents = Object.values(EVENTS).reduce((sum, arr) => sum + arr.length, 0);
+document.getElementById('stat-events').textContent = totalEvents;
+
+// ── RENDER DAYS ──────────────────────────────────────────────────────────────
+function renderDays() {
+  const grid = document.getElementById('days-grid');
+  grid.innerHTML = '';
+
+  DAYS.forEach(d => {
+    const isWeekend = d.day === 'Sat' || d.day === 'Sun';
+    const col = document.createElement('div');
+    col.className = `day-col${isWeekend ? ' weekend' : ''}`;
+    col.dataset.key = d.key;
+
+    // header
+    const hdr = document.createElement('div');
+    hdr.className = 'day-header';
+    const evCount = (EVENTS[d.key] || []).length;
+    hdr.innerHTML = `
+      <div class="day-name">${d.day}</div>
+      <div class="day-date">${d.date}</div>
+      <div class="day-month">${d.month}</div>
+      ${evCount ? `<div class="event-flag" title="${(EVENTS[d.key]||[]).join(' · ')}">${evCount} gig${evCount>1?'s':''}</div>` : ''}
+    `;
+    col.appendChild(hdr);
+
+    // body
+    const body = document.createElement('div');
+    body.className = 'day-body';
+
+    roleOrder.forEach(role => {
+      const shifts = SHIFTS.filter(s => s.day === d.key && s.role === role);
+      if (!shifts.length) return;
+      if (activeFilter !== 'all' && activeFilter !== role) return;
+
+      const lbl = document.createElement('div');
+      lbl.className = `role-section-label role-${role}`;
+      lbl.textContent = roleLabel[role];
+      body.appendChild(lbl);
+
+      shifts.forEach(sh => {
+        const chip = document.createElement('div');
+        chip.className = `shift-chip chip-${role}${activePerson === sh.name ? ' highlighted' : ''}${sh.ringback ? ' chip-ringback-flag' : ''}`;
+        chip.dataset.name = sh.name;
+        const timeLine = sh.note ? `${sh.time} · ${sh.note}` : sh.time;
+        chip.innerHTML = `
+          <span class="chip-name">${sh.name}</span>
+          <span class="chip-time">${timeLine}</span>
+        `;
+        chip.addEventListener('click', () => selectPerson(sh.name));
+        body.appendChild(chip);
+      });
+    });
+
+    col.appendChild(body);
+    grid.appendChild(col);
+  });
+}
+
+// ── RENDER SIDEBAR ─────────────────────────────────────────────────────────
+function renderSidebar(name) {
+  const card = document.getElementById('person-card');
+  if (!name) {
+    card.innerHTML = `<div class="empty-state"><div class="empty-icon">☝️</div><div class="empty-text">Click any shift or name below<br>to see the full weekly schedule</div></div>`;
+    return;
+  }
+
+  const shifts = shiftsByPerson[name] || [];
+  const roles = [...new Set(shifts.map(s => s.role))];
+  const roleBadges = roles.map(r => `<span class="person-role-badge ${roleBadgeClass[r]}">${roleLabel[r]}</span>`).join('');
+
+  const parts = name.trim().split(' ');
+  const initials = parts.length >= 2 ? parts[0][0] + parts[parts.length-1][0] : name.substring(0,2);
+  const mainRole = roles[0] || 'operator';
+  const avatarColor = roleColors[mainRole];
+
+  const daysWorking = new Set(shifts.map(s => s.day)).size;
+
+  const shiftRows = shifts.map(s => {
+    const dayInfo = DAYS.find(d => d.key === s.day);
+    const roleText = s.note ? `${roleLabel[s.role]} · ${s.note}` : roleLabel[s.role];
+    return `
+      <div class="person-shift-row">
+        <div class="shift-dot" style="background:${roleColors[s.role]}"></div>
+        <div class="shift-day-label">${dayInfo ? dayInfo.day + ' ' + dayInfo.date : s.day}</div>
+        <div class="shift-time-label">${s.time}</div>
+        <div class="shift-role-mini">${roleText}</div>
+      </div>`;
+  }).join('');
+
+  card.innerHTML = `
+    <div class="person-card-header">
+      <div class="person-avatar" style="background:${avatarColor}22; color:${avatarColor}">${initials.toUpperCase()}</div>
+      <div class="person-name">${name}</div>
+      ${roleBadges}
+    </div>
+    <div class="person-stats-row">
+      <div class="pstat">
+        <div class="pstat-val">${shifts.length}</div>
+        <div class="pstat-lbl">Shifts</div>
+      </div>
+      <div class="pstat">
+        <div class="pstat-val">${daysWorking}</div>
+        <div class="pstat-lbl">Days on</div>
+      </div>
+    </div>
+    <div class="person-shifts">
+      <div class="person-shifts-title">Schedule this week</div>
+      ${shiftRows || '<div style="color:var(--text-muted);font-size:12px">No shifts recorded</div>'}
+    </div>
+  `;
+}
+
+// ── RENDER TEAM LIST ────────────────────────────────────────────────────────
+function renderTeamList() {
+  const list = document.getElementById('team-list');
+  list.innerHTML = '';
+  allNames.forEach(name => {
+    const shifts = shiftsByPerson[name] || [];
+    const roles = [...new Set(shifts.map(s => s.role))];
+    const mainRole = roles[0] || 'operator';
+    const color = roleColors[mainRole];
+    const parts = name.trim().split(' ');
+    const initials = parts.length >= 2 ? parts[0][0] + parts[parts.length-1][0] : name.substring(0,2);
+
+    const btn = document.createElement('button');
+    btn.className = `team-member-btn${activePerson === name ? ' active' : ''}`;
+    btn.dataset.name = name;
+    const totalHours = shifts.reduce((sum, s) => sum + shiftHours(s.time), 0);
+    btn.innerHTML = `
+      <div class="tm-init" style="background:${color}22; color:${color}">${initials.toUpperCase()}</div>
+      <div>
+        <div class="tm-name">${name}</div>
+        <div class="tm-shifts">${shifts.length} shift${shifts.length !== 1 ? 's' : ''}</div>
+      </div>
+      <div class="tm-meta">
+        <div class="tm-hours">${formatHours(totalHours)}h</div>
+        <div class="tm-roles">${roles.length > 1 ? 'Multi-role' : roleLabel[mainRole]}</div>
+      </div>
+    `;
+    btn.addEventListener('click', () => selectPerson(name));
+    list.appendChild(btn);
+  });
+}
+
+// ── RENDER FESTIVAL WATCH ────────────────────────────────────────────────────
+function renderFestivalWatch() {
+  const list = document.getElementById('fw-list');
+  list.innerHTML = '';
+  DAYS.forEach(d => {
+    const events = EVENTS[d.key];
+    if (!events || !events.length) return;
+    const row = document.createElement('div');
+    row.className = 'fw-day';
+    row.innerHTML = `
+      <div class="fw-date">${d.day} ${d.date} ${d.month}</div>
+      ${events.map(e => `<div class="fw-event">${e}</div>`).join('')}
+    `;
+    list.appendChild(row);
+  });
+  document.getElementById('fw-note').textContent =
+    'Expect surge demand citywide on these nights — plan handovers and breaks around peak egress times.';
+}
+
+// ── SELECT PERSON ─────────────────────────────────────────────────────────
+function selectPerson(name) {
+  activePerson = activePerson === name ? null : name;
+  renderDays();
+  renderSidebar(activePerson);
+  renderTeamList();
+
+  if (activePerson && window.innerWidth < 1000) {
+    document.getElementById('person-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// ── FILTER ─────────────────────────────────────────────────────────────────
+function filterRole(role, evt) {
+  activeFilter = role;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  evt.target.classList.add('active');
+  renderDays();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+renderDays();
+renderSidebar(null);
+renderTeamList();
+renderFestivalWatch();
+</script>
+</body>
+</html>
