@@ -22,6 +22,7 @@
     --supervisor-color: #6f4fd1;
     --operator-color: #1c84cc;
     --special-color: #d9483f;
+    --ringback-color: #c8a800;
     --card-hover: #fff8e6;
   }
 
@@ -353,10 +354,19 @@
     border-color: rgba(28,132,204,0.3);
     color: var(--operator-color);
   }
+  .chip-ringback-flag {
+    background: rgba(255,213,0,0.25) !important;
+    border-color: rgba(180,140,0,0.5) !important;
+  }
   .chip-special {
     background: rgba(217,72,63,0.12);
     border-color: rgba(217,72,63,0.3);
     color: var(--special-color);
+  }
+  .chip-ringback {
+    background: rgba(255,213,0,0.18);
+    border-color: rgba(200,168,0,0.4);
+    color: var(--ringback-color);
   }
 
   /* ── SIDEBAR ── */
@@ -401,6 +411,7 @@
   .badge-supervisor { background: rgba(111,79,209,0.15); color: var(--supervisor-color); }
   .badge-operator { background: rgba(28,132,204,0.15); color: var(--operator-color); }
   .badge-special { background: rgba(217,72,63,0.15); color: var(--special-color); }
+  .badge-ringback { background: rgba(255,213,0,0.2); color: var(--ringback-color); }
 
   .person-stats-row {
     display: grid;
@@ -668,6 +679,8 @@ const DAYS = [
 
 // role: 'dispatch' | 'care' | 'supervisor' | 'operator' | 'special'
 const SHIFTS = [
+  // ── RINGBACK OPS ─────────────────────────────────────────────────────────
+
   // ── MONDAY 13th ──────────────────────────────────────────────────────────
   { day:'d713', role:'dispatch',   name:'Haris',    time:'6am – 2pm' },
   { day:'d713', role:'dispatch',   name:'Usama',    time:'2pm – 10pm' },
@@ -675,16 +688,16 @@ const SHIFTS = [
   { day:'d713', role:'dispatch',   name:'Munib',    time:'9am – 7pm', note:'2nd Dispatch' },
   { day:'d713', role:'care',       name:'Kellie',   time:'6am – 2pm' },
   { day:'d713', role:'supervisor', name:'Haris',    time:'2pm – 5pm' },
-  { day:'d713', role:'operator',   name:'Rubab',    time:'6am – 2pm' },
+  { day:'d713', role:'operator',   name:'Rubab', ringback:true,    time:'6am – 2pm' },
   { day:'d713', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
   { day:'d713', role:'operator',   name:'Lee',      time:'8am – 4pm' },
   { day:'d713', role:'operator',   name:'Bobbie',   time:'8am – 2pm' },
   { day:'d713', role:'operator',   name:'Sine',     time:'9am – 5pm' },
   { day:'d713', role:'operator',   name:'Darren',   time:'9am – 5pm' },
-  { day:'d713', role:'operator',   name:'Bilal',    time:'2pm – 10pm' },
+  { day:'d713', role:'operator',   name:'Bilal', ringback:true,    time:'2pm – 10pm' },
   { day:'d713', role:'operator',   name:'Paul N',   time:'2pm – 10pm' },
   { day:'d713', role:'operator',   name:'Paul G',   time:'4pm – 1am' },
-  { day:'d713', role:'operator',   name:'Jydii',    time:'10pm – 6am' },
+  { day:'d713', role:'operator',   name:'Jydii', ringback:true,    time:'10pm – 6am' },
 
   // ── TUESDAY 14th ─────────────────────────────────────────────────────────
   { day:'d714', role:'dispatch',   name:'Stephen',  time:'6am – 2pm' },
@@ -694,16 +707,16 @@ const SHIFTS = [
   { day:'d714', role:'care',       name:'Kellie',   time:'6am – 2pm' },
   { day:'d714', role:'care',       name:'Michelle', time:'9am – 5pm' },
   { day:'d714', role:'supervisor', name:'Haris',    time:'7am – 5pm' },
-  { day:'d714', role:'operator',   name:'Rubab',    time:'6am – 2pm' },
+  { day:'d714', role:'operator',   name:'Rubab', ringback:true,    time:'6am – 2pm' },
   { day:'d714', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
   { day:'d714', role:'operator',   name:'Lee',      time:'8am – 4pm' },
   { day:'d714', role:'operator',   name:'Rafey',    time:'8am – 7pm' },
   { day:'d714', role:'operator',   name:'Shahzaib', time:'9am – 5pm' },
   { day:'d714', role:'operator',   name:'Hazel',    time:'10am – 4pm' },
-  { day:'d714', role:'operator',   name:'Bilal',    time:'2pm – 10pm' },
+  { day:'d714', role:'operator',   name:'Bilal', ringback:true,    time:'2pm – 10pm' },
   { day:'d714', role:'operator',   name:'Paul N',   time:'2pm – 10pm' },
   { day:'d714', role:'operator',   name:'Paul G',   time:'4pm – 1am' },
-  { day:'d714', role:'operator',   name:'Jydii',    time:'10pm – 6am' },
+  { day:'d714', role:'operator',   name:'Jydii', ringback:true,    time:'10pm – 6am' },
 
   // ── WEDNESDAY 15th ───────────────────────────────────────────────────────
   { day:'d715', role:'dispatch',   name:'Stephen',  time:'6am – 2pm' },
@@ -715,7 +728,7 @@ const SHIFTS = [
   { day:'d715', role:'supervisor', name:'Haris',    time:'7am – 5pm' },
   { day:'d715', role:'special',    name:'Paul N',   time:'8pm – 10pm' },
   { day:'d715', role:'special',    name:'Paul G',   time:'10pm – 6am' },
-  { day:'d715', role:'operator',   name:'Rubab',    time:'6am – 2pm' },
+  { day:'d715', role:'operator',   name:'Rubab', ringback:true,    time:'6am – 2pm' },
   { day:'d715', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
   { day:'d715', role:'operator',   name:'Lee',      time:'8am – 4pm' },
   { day:'d715', role:'operator',   name:'Bobbie',   time:'8am – 4pm' },
@@ -725,7 +738,7 @@ const SHIFTS = [
   { day:'d715', role:'operator',   name:'Arzanish', time:'2pm – 10pm' },
   { day:'d715', role:'operator',   name:'Paul N',   time:'2pm – 8pm' },
   { day:'d715', role:'operator',   name:'Lorraine', time:'4pm – 1am' },
-  { day:'d715', role:'operator',   name:'Jydii',    time:'8pm – 6am' },
+  { day:'d715', role:'operator',   name:'Jydii', ringback:true,    time:'8pm – 6am' },
 
   // ── THURSDAY 16th ────────────────────────────────────────────────────────
   { day:'d716', role:'dispatch',   name:'Stephen',  time:'6am – 2pm' },
@@ -736,7 +749,7 @@ const SHIFTS = [
   { day:'d716', role:'care',       name:'Michelle', time:'9am – 5pm' },
   { day:'d716', role:'supervisor', name:'Haris',    time:'7am – 5pm' },
   { day:'d716', role:'special',    name:'Lee',      time:'6am – 8am' },
-  { day:'d716', role:'operator',   name:'Rubab',    time:'6am – 2pm' },
+  { day:'d716', role:'operator',   name:'Rubab', ringback:true,    time:'6am – 2pm' },
   { day:'d716', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
   { day:'d716', role:'operator',   name:'Lee',      time:'8am – 4pm' },
   { day:'d716', role:'operator',   name:'Shahzaib', time:'8am – 7pm' },
@@ -756,14 +769,14 @@ const SHIFTS = [
   { day:'d717', role:'care',       name:'Kellie',   time:'6am – 2pm' },
   { day:'d717', role:'care',       name:'Michelle', time:'9am – 5pm' },
   { day:'d717', role:'supervisor', name:'Haris',    time:'7am – 5pm' },
-  { day:'d717', role:'operator',   name:'Rubab',    time:'6am – 6pm', note:'with Shahzaib' },
+  { day:'d717', role:'operator',   name:'Rubab', ringback:true,    time:'6am – 6pm', note:'with Shahzaib' },
   { day:'d717', role:'operator',   name:'Bernie',   time:'7am – 3pm' },
   { day:'d717', role:'operator',   name:'Bobbie',   time:'8am – 4pm' },
   { day:'d717', role:'operator',   name:'Rafey',    time:'8am – 6pm' },
   { day:'d717', role:'operator',   name:'Sine',     time:'9am – 5pm' },
   { day:'d717', role:'operator',   name:'Ahmed',    time:'10am – 8pm' },
   { day:'d717', role:'operator',   name:'Hazel',    time:'10am – 4pm' },
-  { day:'d717', role:'operator',   name:'Bilal',    time:'2pm – 12am' },
+  { day:'d717', role:'operator',   name:'Bilal', ringback:true,    time:'2pm – 12am' },
   { day:'d717', role:'operator',   name:'Lorraine', time:'4pm – 1am' },
   { day:'d717', role:'operator',   name:'Arzanish', time:'6pm – 6am' },
   { day:'d717', role:'operator',   name:'Paul G',   time:'10pm – 6am' },
@@ -772,25 +785,25 @@ const SHIFTS = [
   { day:'d718', role:'dispatch',   name:'Stephen',  time:'6am – 1pm' },
   { day:'d718', role:'dispatch',   name:'Munib',    time:'1pm – 8pm' },
   { day:'d718', role:'dispatch',   name:'Mo',       time:'8pm – 6am' },
-  { day:'d718', role:'operator',   name:'Rafey',    time:'6am – 6pm' },
+  { day:'d718', role:'operator',   name:'Rafey', ringback:true,    time:'6am – 6pm' },
   { day:'d718', role:'operator',   name:'Shahzaib', time:'8am – 6pm' },
   { day:'d718', role:'operator',   name:'Ahmed',    time:'10am – 8pm' },
   { day:'d718', role:'operator',   name:'Darren',   time:'12pm – 8pm' },
   { day:'d718', role:'operator',   name:'Lorraine', time:'4pm – 12am' },
-  { day:'d718', role:'operator',   name:'Bilal',    time:'6pm – 2am' },
+  { day:'d718', role:'operator',   name:'Bilal', ringback:true,    time:'6pm – 2am' },
   { day:'d718', role:'operator',   name:'Arzanish', time:'6pm – 4am' },
-  { day:'d718', role:'operator',   name:'Jydii',    time:'6pm – 6am' },
+  { day:'d718', role:'operator',   name:'Jydii', ringback:true,    time:'6pm – 6am' },
 
   // ── SUNDAY 19th ──────────────────────────────────────────────────────────
   { day:'d719', role:'dispatch',   name:'Rafey',    time:'6am – 6pm' },
   { day:'d719', role:'dispatch',   name:'Jydii',    time:'6pm – 6am' },
   { day:'d719', role:'special',    name:'Paul G',   time:'11:45pm – 6am', note:'Limerick run' },
-  { day:'d719', role:'operator',   name:'Ahmed',    time:'6am – 6pm' },
+  { day:'d719', role:'operator',   name:'Ahmed', ringback:true,    time:'6am – 6pm' },
   { day:'d719', role:'operator',   name:'Michelle', time:'8am – 4pm' },
   { day:'d719', role:'operator',   name:'Paul N',   time:'10am – 6pm' },
   { day:'d719', role:'operator',   name:'Lorraine', time:'4pm – 12am' },
   { day:'d719', role:'operator',   name:'Bilal',    time:'4pm – 2am' },
-  { day:'d719', role:'operator',   name:'Arzanish', time:'6pm – 6am' },
+  { day:'d719', role:'operator',   name:'Arzanish', ringback:true, time:'6pm – 6am' },
 ];
 
 // Major gigs happening across Dublin this week — context for staffing levels
@@ -806,6 +819,7 @@ const roleColors = {
   supervisor: 'var(--supervisor-color)',
   operator:   'var(--operator-color)',
   special:    'var(--special-color)',
+  ringback:   'var(--ringback-color)',
 };
 const roleBadgeClass = {
   dispatch:   'badge-dispatch',
@@ -813,6 +827,7 @@ const roleBadgeClass = {
   supervisor: 'badge-supervisor',
   operator:   'badge-operator',
   special:    'badge-special',
+  ringback:   'badge-ringback',
 };
 const roleLabel = {
   dispatch: 'Dispatch', care: 'Customer Care', supervisor: 'Supervisor',
@@ -899,7 +914,7 @@ function renderDays() {
 
       shifts.forEach(sh => {
         const chip = document.createElement('div');
-        chip.className = `shift-chip chip-${role}${activePerson === sh.name ? ' highlighted' : ''}`;
+        chip.className = `shift-chip chip-${role}${activePerson === sh.name ? ' highlighted' : ''}${sh.ringback ? ' chip-ringback-flag' : ''}`;
         chip.dataset.name = sh.name;
         const timeLine = sh.note ? `${sh.time} · ${sh.note}` : sh.time;
         chip.innerHTML = `
